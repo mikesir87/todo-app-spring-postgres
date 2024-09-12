@@ -19,7 +19,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
-          version: "todo-demo-app:latest"
           driver: cloud
           endpoint: "docker/devrel"
       - name: Build and push

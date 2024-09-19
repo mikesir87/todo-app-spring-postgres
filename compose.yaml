@@ -6,14 +6,14 @@ services:
     depends_on:
       - db  # Ensure the database starts before the app
     environment:
-      POSTGRES_HOST: db
-      POSTGRES_PORT: 5432
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres  # Update with your actual password
-      POSTGRES_DB: postgres  # Update with your database name
+      - 'POSTGRES_HOST=db'
+      - 'POSTGRES_PORT=5432'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'  # Update with your actual password
+      - 'POSTGRES_DB: postgres'  # Update with your database name
 
   db:
-    image: postgres
+    image: postgres:16-alpine
     restart: always
     environment:
       POSTGRES_USER: postgres

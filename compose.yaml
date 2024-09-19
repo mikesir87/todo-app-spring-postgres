@@ -1,6 +1,6 @@
 services:
   server:
-    image: olegselajev241/todo-demo-application
+    image: olegselajev241/todo-demo-application:latest
     ports:
       - 8080:8080
 #    depends_on:

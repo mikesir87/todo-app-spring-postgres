@@ -1,6 +1,9 @@
 services:
   server:
-    image: olegselajev241/todo-demo-application:latest
+    build:
+      context: .
+      args:
+        PROFILE: "default"
     ports:
       - 8080:8080
 #    depends_on:

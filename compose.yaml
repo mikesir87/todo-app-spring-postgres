@@ -1,5 +1,3 @@
-version: '3.8'  # Specify version to ensure compatibility
-
 services:
   server:
     image: olegselajev241/todo-demo-application

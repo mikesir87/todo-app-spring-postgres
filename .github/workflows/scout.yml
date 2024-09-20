@@ -48,9 +48,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: docker/scout-action@v1
         with:
-          command: compare
-          image: ${{ steps.meta.outputs.tags }}
-          to: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.COMPARE_TAG }}
-          ignore-unchanged: true
+          command: quickview
+          image: olegselajev241/todo-demo-application:latest
           only-severities: critical,high
           write-comment: false

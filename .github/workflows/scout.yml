@@ -1,8 +1,8 @@
-name: dbc
+name: Docker
 
 on:
   workflow_run:
-    workflows: [tests]
+    workflows: [dbc]
     types:
       - completed
 
@@ -11,25 +11,24 @@ env:
   REGISTRY: docker.io
   IMAGE_NAME: olegselajev241/todo-demo-application
   SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
-
+  # Use `latest` as the tag to compare to if empty, assuming that it's already pushed
+  COMPARE_TAG: latest
 
 jobs:
-  docker:
+  scout:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+
+      # Login against a Docker registry except on PR
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@v2.1.0
         with:
+          registry: ${{ env.REGISTRY }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          version: "lab:latest"
-          driver: cloud
-          endpoint: "docker/devrel"
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
@@ -43,14 +42,15 @@ jobs:
             type=edge,branch=$repo.default_branch
             type=semver,pattern=v{{version}}
             type=sha,prefix=,suffix=,format=shorts
-      - name: Build and push
-        uses: docker/build-push-action@v5
+
+      - name: Docker Scout
+        id: docker-scout
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: docker/scout-action@v1
         with:
-          context: .
-          tags: |
-           "latest"
-            ${{ steps.meta.outputs.tags }}
-          # For pull requests, export results to the build cache.
-          # Otherwise, push to a registry.
-          outputs: ${{ github.event_name == 'pull_request' && 'type=cacheonly' || 'type=registry,push=true' }}
-  
+          command: compare
+          image: ${{ steps.meta.outputs.tags }}
+          to: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.COMPARE_TAG }}
+          ignore-unchanged: true
+          only-severities: critical,high
+          write-comment: false

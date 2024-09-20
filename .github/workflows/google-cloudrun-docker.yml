@@ -3,7 +3,7 @@ name: 'Deploy to Cloud Run'
 
 on:
   workflow_run:
-    workflows: [dbc]
+    workflows: [scout]
     types:
       - completed
 

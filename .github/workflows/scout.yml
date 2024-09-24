@@ -41,6 +41,7 @@ jobs:
         id: docker-scout
         uses: docker/scout-action@v1
         with:
+          organization: docker
           command: quickview,compare
           image: olegselajev241/todo-demo-application:${{ env.SHA }}
           to-latest: true

@@ -10,7 +10,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: docker.io
   IMAGE_NAME: olegselajev241/todo-demo-application
-  SHA: ${{ github.event.pull_request.head.sha}}
+  SHA: ${{ github.sha}}
 
 
 jobs:

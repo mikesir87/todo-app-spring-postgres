@@ -8,7 +8,7 @@ on:
 
 env:
   IMAGE_NAME: olegselajev241/todo-demo-application
-  SHA: ${{ github.event.pull_request.head.sha}}
+  SHA: ${{ github.sha}}
   COMPARE_TAG: latest
 
 jobs:

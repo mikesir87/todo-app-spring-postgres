@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestPropertySource(properties = {
-        "spring.datasource.url=jdbc:tc:postgresql:15-alpine:///todos"
+        "spring.datasource.url=jdbc:tc:postgresql:16-alpine:///todos"
 })
 class TodoRepositoryTest {
 

@@ -42,9 +42,8 @@ jobs:
         uses: docker/scout-action@v1
         with:
           organization: olegselajev241
-          command: quickview,compare
+          command: policy
           image: olegselajev241/todo-demo-application:${{ env.SHA }}
-          to-latest: true
-          only-severities: critical,high
           exit-on: policy
+          exit-code: true
           write-comment: false

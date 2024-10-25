@@ -37,6 +37,19 @@ jobs:
           tags: |
             type=sha,prefix=,suffix=,format=short
 
+      - name: Compare
+        uses: docker/scout-action@v1
+        with:
+          command: compare
+          image: ${{ steps.meta.outputs.tags }}
+          to-env: production
+          platform: "linux/amd64"
+          ignore-unchanged: true
+          only-severities: critical,high
+          organization: ${{ env.DOCKER_ORG }}
+          exit-on: policy
+
+          
       - name: Docker Scout
         id: docker-scout
         uses: docker/scout-action@v1

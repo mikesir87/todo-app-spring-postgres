@@ -46,7 +46,7 @@ jobs:
           platform: "linux/amd64"
           ignore-unchanged: true
           only-severities: critical,high
-          organization: ${{ env.DOCKER_ORG }}
+          organization: olegselajev241
           exit-on: policy
 
           

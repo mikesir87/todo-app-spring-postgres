@@ -65,7 +65,7 @@ class ApplicationTests {
                 .get("/todos")
                 .then()
                 .statusCode(200)
-                .body(".", hasSize(3));
+                .body(".", hasSize(4));
 
         todoRepository.deleteAll();
     }
@@ -80,7 +80,7 @@ class ApplicationTests {
                 .get("/todos/" + feedAllHorses.getId())
                 .then()
                 .statusCode(200)
-                .body("title", equalTo("Free all horses"));
+                .body("title", equalTo("Feed all horses"));
 
 
         todoRepository.deleteAll();

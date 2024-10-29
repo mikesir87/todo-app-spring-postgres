@@ -23,6 +23,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
@@ -51,7 +52,7 @@ class ApplicationTests {
     }
 
     @Test
-    void contextLoads() {
+    void listAllTodos() {
         List<Todo> customers = List.of(
                 new Todo(null, "Feed all horses", false, 1),
                 new Todo(null, "Free all horses", false, 2),
@@ -79,7 +80,8 @@ class ApplicationTests {
                 .get("/todos/" + feedAllHorses.getId())
                 .then()
                 .statusCode(200)
-                .body(".", hasSize(4));
+                .body("title", equalTo("Feed all horses"));
+
 
         todoRepository.deleteAll();
     }

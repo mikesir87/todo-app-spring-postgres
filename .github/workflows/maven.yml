@@ -33,3 +33,10 @@ jobs:
         token: ${{ secrets.TC_CLOUD_TOKEN }}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Test Report
+      uses: dorny/test-reporter@v1.9.1
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: JUnit Tests            # Name of the check run which will be created
+        path: '**/surefire-reports/TEST-*.xml'    # Path to test results
+        reporter: junit        # Format of test results

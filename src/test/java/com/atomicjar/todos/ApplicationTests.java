@@ -65,7 +65,7 @@ class ApplicationTests {
                 .get("/todos")
                 .then()
                 .statusCode(200)
-                .body(".", hasSize(4));
+                .body(".", hasSize(3));
 
         todoRepository.deleteAll();
     }

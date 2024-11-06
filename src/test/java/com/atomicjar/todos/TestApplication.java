@@ -23,25 +23,3 @@ public class TestApplication {
     }
 
 }
-
-@Component
-class DataLoader {
-
-    private TodoRepository todoRepository;
-    JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    public DataLoader(TodoRepository todoRepository, JdbcTemplate jdbcTemplate) {
-        this.todoRepository = todoRepository;
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    @PostConstruct
-    public void addTodo() {
-        String title = "I need your root, your RAM, and your CPU cycles";
-
-        Todo t = new Todo();
-        t.setTitle(title);
-        todoRepository.save(t);
-    }
-}

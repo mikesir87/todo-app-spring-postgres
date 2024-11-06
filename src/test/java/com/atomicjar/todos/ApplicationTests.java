@@ -25,6 +25,8 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
 classes = {ContainersConfig.class})
@@ -83,6 +85,22 @@ class ApplicationTests {
                 .body("title", equalTo("Feed all horses"));
 
 
+        todoRepository.deleteAll();
+    }
+
+    @Test
+    void deleteWorks() {
+        Todo feedAllHorses = todoRepository.save(new Todo(null, "Feed all horses", false, 1));
+
+        String id = feedAllHorses.getId();
+
+        given(requestSpecification)
+                .when()
+                .delete("/todos/" + id)
+                .then()
+                .statusCode(200);
+
+        assertFalse(todoRepository.existsById(id));
         todoRepository.deleteAll();
     }
 

@@ -21,5 +21,4 @@ public class TestApplication {
                 .with(ContainersConfig.class)
                 .run(args);
     }
-
 }

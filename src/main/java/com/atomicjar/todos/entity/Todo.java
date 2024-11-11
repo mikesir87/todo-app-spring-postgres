@@ -65,6 +65,7 @@ public class Todo {
     }
 
     public String getUrl() {
-        return ServletUriComponentsBuilder.fromCurrentContextPath().toUriString() + "/todos/" + this.getId();
+        String url = ServletUriComponentsBuilder.fromCurrentContextPath().toUriString() + "/todos/" + this.getId();
+        return url.replaceFirst("http:", "https:"); //
     }
 }

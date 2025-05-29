@@ -11,33 +11,29 @@
     <section id="api-root">
       <div class="wrapper">
         <label for="api-root-url">Todo-Backend api root</label>
-        <input id="api-root-url" placeholder="e.g. http://todo-backend-sinatra.herokuapp.com/todos"></input>
+        <input id="api-root-url" placeholder="e.g. http://localhost:8080/todos"></input>
       </div>
       <button>go</button>
     </section>
 
-    <section id="target-info">
-      <h2>client connected to: <span class="target-url"/></h2>
-      <a href="./index.html">choose a different server to connect to</a>
-    </section>
 
-		<section id="todoapp">
-			<header id="header">
-				<h1>todos</h1>
-				<input id="new-todo" placeholder="What needs to be done?" autofocus>
-			</header>
-			<section id="main">
-				<input id="toggle-all" type="checkbox">
-				<label for="toggle-all">Mark all as complete</label>
-				<ul id="todo-list"></ul>
-			</section>
-			<footer id="footer"></footer>
+	<section id="todoapp">
+		<header id="header">
+			<h1>todos</h1>
+			<input id="new-todo" placeholder="What needs to be done?" autofocus>
+		</header>
+		<section id="main">
+			<input id="toggle-all" type="checkbox">
+			<label for="toggle-all">Mark all as complete</label>
+			<ul id="todo-list"></ul>
 		</section>
-		<footer id="info">
-			<p>Double-click to edit a todo</p>
-      <p>Written by <a href="https://github.com/addyosmani">Addy Osmani</a>, modified by <a href="https://github.com/moredip">Pete Hodgson</a> to be integrated with a <a href="http://www.todobackend.com">TodoBackend API</a>.</p>
-      <p>Part of <a href="http://todomvc.com">TodoMVC</a> &amp; <a href="http://www.todobackend.com">TodoBackend</a></p>
-		</footer>
+		<footer id="footer"></footer>
+	</section>
+	<footer id="info">
+		<p>Double-click to edit a todo</p>
+        <p>Written by <a href="https://github.com/addyosmani">Addy Osmani</a>, modified by <a href="https://github.com/moredip">Pete Hodgson</a> to be integrated with a <a href="http://www.todobackend.com">TodoBackend API</a>.</p>
+        <p>Part of <a href="http://todomvc.com">TodoMVC</a> &amp; <a href="http://www.todobackend.com">TodoBackend</a></p>
+	</footer>
 		<script type="text/template" id="item-template">
 			<div class="view">
 				<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>

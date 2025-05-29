@@ -14,7 +14,7 @@
 	<name>testcontainers-java-spring-boot-quickstart</name>
 	<description>AtomicJar booth password application </description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 		<testcontainers.version>1.20.1</testcontainers.version>
 	</properties>
 	<dependencies>
@@ -86,13 +86,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>com.google.cloud</groupId>
-				<artifactId>spring-cloud-gcp-dependencies</artifactId>
-				<version>4.10.9</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -124,15 +117,6 @@
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>
 					<scope>runtime</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>gcp</id>
-			<dependencies>
-				<dependency>
-					<groupId>com.google.cloud</groupId>
-					<artifactId>spring-cloud-gcp-starter-sql-postgresql</artifactId>
 				</dependency>
 			</dependencies>
 		</profile>

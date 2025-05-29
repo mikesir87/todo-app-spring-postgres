@@ -25,12 +25,7 @@ $(function () {
 	'use strict';
 
 
-  var apiRootUrl = window.location.search.substr(1);
-  if( !apiRootUrl ){
-    $("body > *").hide();
-    $("#api-root").show();
-    return;
-  }
+  var apiRootUrl = "http://localhost:8080/todos";
   $("#api-root").hide();
 
   $("#target-info .target-url").text(apiRootUrl);

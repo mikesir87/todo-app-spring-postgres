@@ -8,15 +8,18 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.atomicjar</groupId>
 	<artifactId>testcontainers-java-spring-boot-quickstart</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>testcontainers-java-spring-boot-quickstart</name>
-	<description>AtomicJar booth password application </description>
+	<description>Sample Todo List application using Postgres</description>
+
 	<properties>
 		<java.version>21</java.version>
 		<testcontainers.version>1.20.1</testcontainers.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -59,11 +62,6 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

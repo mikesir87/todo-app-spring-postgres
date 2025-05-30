@@ -36,10 +36,8 @@ class ApplicationTests {
     protected Integer localServerPort;
     protected RequestSpecification requestSpecification;
 
-
     @Autowired
     private TodoRepository todoRepository;
-
 
     @BeforeEach
     void setUp() {
